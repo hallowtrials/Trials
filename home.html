@@ -287,12 +287,23 @@
       <h3>Short Video</h3>
       <p>Get a sneak peek into the haunted halls. Watch this teaser to feel the chill before you enter the Trials.</p>
     </div>
+    <style>
+      /* add this with your other styles */
+      .short-video-card{ aspect-ratio: 16 / 9; }
+      .short-video-card iframe{ width:100%; height:100%; border:0; border-radius:20px; display:block; }
+    </style>
     <div class="short-video-card">
-      <video id="teaser" controls>
-        <source src="video.mp4" type="video/mp4" />
-        Sorry, your browser doesn’t support embedded videos.
-      </video>
+      <iframe src="https://cloudmails.sharepoint.com/sites/TheHallowTrialsHalloweenEvent/_layouts/15/embed.aspx?UniqueId=ea0f67c2-6ec6-4473-9ff1-31fcbdb83221&embed=%7B%22ust%22%3Atrue%2C%22hv%22%3A%22CopyEmbedCode%22%7D&referrer=StreamWebApp&referrerScenario=EmbedDialog.Create" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen title="FINAL TRAILER 4K.mov"></iframe>
+
+      <!-- Optional accessible fallback -->
+      <noscript>
+        <a href="https://cloudmails.sharepoint.com/sites/TheHallowTrialsHalloweenEvent/_layouts/15/stream.aspx?id=%2Fsites%2FTheHallowTrialsHalloweenEvent%2FShared%20Documents%2FMedia%20Division%2FFINAL%20TRAILER%204K%2Emov&ga=1">
+          Watch the trailer
+        </a>
+      </noscript>
     </div>
+
+
   </section>
 
   <!-- ========== PUZZLE ========== -->
