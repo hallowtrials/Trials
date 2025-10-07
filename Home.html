@@ -60,6 +60,24 @@
         radial-gradient(120% 140% at 0% 0%, rgba(177,15,46,.08), transparent 60%),
         linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
     }
+    .tutorial{
+    font-family: Cinzel,serif;
+    font-size: clamp(42px,6vw,80px);
+    margin: 0 0 16px;
+    text-shadow: 0 0 40px rgba(107, 77, 255, 0.14);
+
+    /* — added — */
+    display: inline-block;                 /* so the border hugs the text */
+    padding: .35em .6em;                   /* breathing room inside border */
+    border: 1px solid rgba(230,227,255,.22);
+    border-radius: 14px;
+    box-shadow:
+        0 0 0 1px rgba(161, 4, 35, 0.28) inset, /* subtle inner tint (blood) */
+        0 8px 24px rgba(0,0,0,.35);           /* soft lift */
+    background:
+        radial-gradient(120% 140% at 0% 0%, rgba(139, 0, 25, 0.1), transparent 60%),
+        linear-gradient(180deg, #6403032c, rgba(255,255,255,.00));
+    }
 
     .subtitle{color:var(--ash);margin-bottom:16px;line-height:1.6;font-size:18px}
 
@@ -390,6 +408,30 @@
     Tickets are <strong>RM10</strong> per person.
     On submit we’ll notify <strong>hallowtrials@gmail.com</strong>.
   </p>
+  <h4 class="tutorial" style="font-size: 17px;"><span style="color: rgba(216, 197, 197, 0.904);">
+    Tutorial for the Submit step:<br><br>
+
+    ◆  Fill All The Details.<br>
+
+    ◆  Tap "Reserve My Spot". <br>
+
+    ◆  Your email app opens automatically:<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;iPhone → Gmail app (or Mail if not installed)<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Android → your default email app<br>
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Desktop → Gmail web<br>
+
+    ◆  The draft is pre-filled.<br>
+
+    ◆  Review (No Need To Modify) & send to hallowtrials@gmail.com<br>
+
+
+    ◆  Back on the site you’ll see “Booking received” and a status.<br>
+
+    ◆  We’ll email you if anything else is needed!<br></span></h4><br>
+
 
   <div class="reg-card" style="background:#121018;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.6)">
     <div id="regError" style="color:#ffb3b3;margin-top:8px;display:none"></div>
