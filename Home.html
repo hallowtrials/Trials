@@ -16,7 +16,7 @@
       --card:#121018;--max:1400px;--safe-top: env(safe-area-inset-top);--safe-bottom: env(safe-area-inset-bottom);
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    body{margin:0;font-family:Inter,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg),var(--bg-2));min-height:100vh;display:flex;flex-direction:column}
+    body{margin:0;font-family:Inter,sans-serif;color:var(--ink);background:linear-gradient(180deg,var(--bg),var(--bg-2));min-height:100vh;display:flex;flex-direction:column;-webkit-tap-highlight-color: transparent}
     a{color:inherit;text-decoration:none}
 
     header{position:sticky;top:0;z-index:30;background:rgba(10,10,15,.9);backdrop-filter:blur(6px);border-bottom:1px solid rgba(255,255,255,.05)}
@@ -83,8 +83,6 @@
     .panel::after{right:-22px;transform:scaleX(-1)}
 
     /* RIGHT image card */
-    
-
     .hero-right{
       position:relative;
       width:100%;
@@ -231,6 +229,8 @@
     }
     @media(max-width:560px){.tiles{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:480px){.chest-grid{grid-template-columns:1fr}}
+    
+    
 
     /* ===== Footer ===== */
     .site-footer{margin-top:80px;background:#0b0b10;border-top:1px solid rgba(255,255,255,.06)}
@@ -256,6 +256,38 @@
       .footer-inner{flex-wrap:wrap;justify-content:center}
       .f-nav{order:3;width:100%;justify-content:center;margin:10px 0 0}
     }
+
+    /* ======== MOBILE POLISH (no desktop changes) ======== */
+    @media (max-width: 640px){
+      section{ padding:56px 16px }
+      nav{ padding:14px 16px; gap:12px }
+      .brand{ font-size:20px }
+      .navlinks{ gap:16px }
+
+      .hero{ gap:20px }
+      .hero-left{ max-width:100% }
+      .hero-right{ aspect-ratio:3/4 }                 /* taller card reads better on phones */
+
+      .panel{ padding:20px }                           /* tighter card padding on small screens */
+
+      .codebar{ flex-direction:column; align-items:stretch; gap:8px }
+      .codebar input{ width:100%; min-width:0 }        /* full-width input */
+      .codebar button{ width:100%; padding:14px }      /* full-width buttons for easy tapping */
+
+      .chest-grid{ grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px }
+      .reveal .label{ padding:6px 8px }                /* avoid text wrapping */
+
+      .short-video{ gap:18px }
+      .short-video-card{ border-radius:16px }
+      .short-video-card iframe{ border-radius:16px }
+
+      .tiles{ gap:10px }
+      .tile{ padding:14px }
+    }
+    @media (max-width: 420px){
+      .chest-grid{ grid-template-columns:1fr }         /* single column on very small phones */
+      .hero-right{ aspect-ratio:4/5 }
+    }
   </style>
 </head>
 <body>
@@ -275,14 +307,14 @@
   <section id="home" class="hero">
     <div class="hero-left">
       <h1 class="title">Enter the <span style="color:var(--blood)">Trials</span></h1>
-      <h2 class="cotitle" style="font-size: 30px;"> <span style="color:var(--blood)">Certificate Will Be Provided!</span></h2>
+      <h2 class="cotitle" style="font-size: 30px;"><span style="color:var(--blood)">Certificate Will Be Provided!</span></h2><br>
       <p class="subtitle">The School of Foundation presents a one time Halloween event filled with thrills and excitement! Register here, watch our trailer, follow our Instagram page and crack the codes hidden around APU's campus!</p><br><br>
 
       <div class="panel" aria-label="Event Details">
         <h3>Event Details</h3>
         <p><strong>Date:</strong> 31 Oct, 8:00PM — 10:30PM</p><br>
         <p><strong>Venue:</strong> Auditorium 1</p><br>
-        <p><strong>What to expect:</strong> Thrilling Games and Monsters!!!</p>
+        <p><strong>What to expect:</strong> Thrilling Games and Monsters</p>
       </div>
     </div>
     <div class="fading-border-box">
@@ -360,26 +392,23 @@
   </p>
 
   <div class="reg-card" style="background:#121018;border:1px solid rgba(255,255,255,.1);border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.6)">
-    
-    
     <div id="regError" style="color:#ffb3b3;margin-top:8px;display:none"></div>
 
     <form id="regForm" class="reg-grid" autocomplete="on" novalidate
           style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:14px">
       <!-- Payment Method -->
       <div class="field full" style="grid-column:1 / -1;display:flex;flex-direction:column;gap:8px">
-        <label style="font-weight:700;letter-spacing:.2px">Payment method</label>
-        <br>
+        <label style="font-weight:700;letter-spacing:.2px">Payment method</label><br>
         <div class="pay-methods" style="display:flex;gap:16px;flex-wrap:wrap">
-          
           <label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer">
-            <input type="radio" name="payMethod" value="qr" style="accent-color:#b10f2e"> <span>DuitNow QR / Online Transfer</span>
+            <input type="radio" name="payMethod" value="qr" style="accent-color:#b10f2e">
+            <span>DuitNow QR / Online Transfer</span>
           </label>
           <label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer">
-            <input type="radio" name="payMethod" value="bank" style="accent-color:#b10f2e"> <span>Bank Transfer</span>
+            <input type="radio" name="payMethod" value="bank" style="accent-color:#b10f2e">
+            <span>Bank Transfer</span>
           </label>
-        </div>
-        <p class="muted" style="color:#9a94b8">Total due updates with your ticket quantity.</p>
+        </div><br>
       </div>
 
       <!-- QR block -->
@@ -389,25 +418,24 @@
           <div>
             <p><b>Payee:</b> MUHAMMAD DANISH BIN MOHD</p><br>
             <p><b>Amount:</b> RM <span id="qrAmount">10</span></p><br>
-            <p><b>Reference to include:</b> HALLOW-<span id="qrRefCode">XXXXXX</span></p><br>
-            <div class="muted" style="margin-top:6px;color:#9a94b8">After paying, upload your proof (screenshot/receipt) and tick the confirmation below.</div>
-<br>
-            <label class="field" style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
-              <span>Upload payment proof (image, max 5MB)</span><br>
-              <input id="qrProof" type="file" accept="image/*" style="background:#0b0b12;border:1px solid rgba(255,255,255,.12);color:#e6e3ff;padding:10px;border-radius:10px">
-            </label>
-            <div id="qrPreview" class="muted" style="display:none;margin-top:6px;color:#9a94b8"></div>
-<br>
-            <label style="display:flex;align-items:center;gap:8px;margin-top:8px">
-              <input type="checkbox" id="paidConfirm"> <span>I have completed the QR/online transfer.</span>
-            </label>
-            <br>
+            <p><b>Reference to include:</b> HALLOW TRIALS</p><br>
+            <div class="muted" style="margin-top:6px;color:#9a94b8">After paying, upload your proof (screenshot/receipt) and tick the confirmation below.</div><br>
 
             <label class="field" style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
-              <span>Payment reference (optional)</span>
+              <span>Upload payment proof (image, max 5MB)</span>
+              <input id="qrProof" type="file" accept="image/*" style="background:#0b0b12;border:1px solid rgba(255,255,255,.12);color:#e6e3ff;padding:10px;border-radius:10px">
+            </label>
+            <div id="qrPreview" class="muted" style="display:none;margin-top:6px;color:#9a94b8"></div><br>
+
+            <label style="display:flex;align-items:center;gap:8px;margin-top:8px">
+              <input type="checkbox" id="QRpaidConfirm"> <span>I understand that tickets are non-refundable</span>
+            </label>
+
+            <label class="field" style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
+              <br><span>Payment reference (optional)</span><br>
               <input id="payRef" placeholder="Maybank Ref No. / TNG ID"
                      style="background:#0b0b12;border:1px solid rgba(255,255,255,.12);color:#e6e3ff;padding:12px;border-radius:12px">
-            </label><br>
+            </label>
           </div>
         </div>
       </div>
@@ -420,34 +448,35 @@
             <p><b>Account name:</b> MUHAMMAD DANISH BIN MOHD</p><br>
             <p><b>Account no.:</b> <code style="user-select:all">0101 8914 0360</code></p><br>
             <p><b>Amount:</b> RM <span id="bankAmount">10</span></p><br>
-            <p class="muted" style="color:#9a94b8">Transfer using your bank / card to the account above, then upload your receipt below.</p>
+            <p class="muted" style="color:#9a94b8">Transfer using your bank to the account above, then upload your receipt below.</p><br>
 
             <label class="field" style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
-              <span>Upload payment proof (image, max 5MB)</span><br>
+              <span>Upload payment proof (image, max 5MB)</span>
               <input id="bankProof" type="file" accept="image/*"
                      style="background:#0b0b12;border:1px solid rgba(255,255,255,.12);color:#e6e3ff;padding:10px;border-radius:10px">
             </label>
-            <div id="bankPreview" class="muted" style="display:none;margin-top:6px;color:#9a94b8"></div>
+            <div id="bankPreview" class="muted" style="display:none;margin-top:6px;color:#9a94b8"></div><br>
+
+            <label style="display:flex;align-items:center;gap:8px;margin-top:8px">
+              <input type="checkbox" id="BankpaidConfirm"> <span>I understand that tickets are non-refundable</span>
+            </label>
 
             <label class="field" style="display:flex;flex-direction:column;gap:6px;margin-top:10px">
-                <br>
-              <span>Payment reference (optional)</span><br>
+              <br><span>Payment reference (optional)</span>
               <input id="bankRef" placeholder="Bank/Card reference number"
                      style="background:#0b0b12;border:1px solid rgba(255,255,255,.12);color:#e6e3ff;padding:12px;border-radius:12px">
-            </label><br>
+            </label>
           </div>
         </div>
       </div>
-      
+
       <div class="field">
-        <br>
         <label for="fullName" style="font-weight:700">Full Name </label>
         <input id="fullName" name="fullName" placeholder="Ashmit Dhir"
                style="background:#0b0b12;border:1px solid rgba(255,255,255,.12);color:#e6e3ff;padding:12px;border-radius:12px" required>
       </div>
 
       <div class="field">
-        <br>
         <label for="email" style="font-weight:700">Email</label>
         <input id="email" name="email" type="email" placeholder="you@example.com"
                style="background:#0b0b12;border:1px solid rgba(255,255,255,.12);color:#e6e3ff;padding:12px;border-radius:12px" required>
@@ -455,14 +484,14 @@
 
       <div class="field">
         <br>
-        <br>
-        <label for="qty" style="font-weight:700">Number of tickets</label>
-        <label for="qty" style="background:#0b0b12;border:1px solid rgba(255,255,255,.12);color:#e6e3ff;padding:12px;border-radius:12px">1</label>
-
+        <label for="qty" style="font-weight:700">Number of tickets</label><br><br>
+        <select id="qty" name="qty"
+                style="background:#0b0b12;border:1px solid rgba(255,255,255,.12);color:#e6e3ff;padding:12px;border-radius:12px">
+          <option value="1" selected>1</option>
+        </select><br><br>
       </div>
 
       <div class="field">
-        <br>
         <br>
         <label style="font-weight:700">Total price</label>
         <br><br>
@@ -470,10 +499,9 @@
       </div>
 
       <div class="field full" style="grid-column:1 / -1">
-        <br>
         <label for="note" style="font-weight:700">TP number</label><br>
         <label for="note" style="font-weight:700">(Answer n/a if outside APU)</label><br><br>
-        <input id="note" name="note" placeholder="Your TP Number"
+        <input id="note" name="note" placeholder="Your TP Number" required
                style="background:#0b0b12;border:1px solid rgba(255,255,255,.12);color:#e6e3ff;padding:12px;border-radius:12px">
       </div>
 
@@ -488,58 +516,86 @@
   </div>
 </section>
 
+<!-- Mobile tweaks (keeps desktop design) -->
+<style>
+  @media (max-width:640px){
+    #register .reg-grid{ grid-template-columns:1fr; gap:14px }
+    #register .qr-wrap{ padding:10px }
+    #register .btn{ width:100%; padding:16px }
+    #register .pay-methods{ gap:12px }
+  }
+</style>
+
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 (function(){
   /* ===== CONFIG ===== */
-  const API_URL = 'https://script.google.com/macros/s/AKfycbzZ0_nblIXiEvm7_6ymEz-qs-bOPtp1J9KTdBhJWMquG6vVAzb7Zi2cfGgeuR0Fid4/exec';
-  const CAPACITY = 200, PRICE = 10;
+  const API_URL = 'https://script.google.com/macros/s/AKfycbxlEAVWRpncfClDj5MaEfg93nByp3wuyMsUFZiiWQHe8ueKT1BnItp2KwXVYOoKI5c/exec';
+  const PRICE = 10;
   const EMAILJS_PUBLIC_KEY='YOUR_PUBLIC_KEY_HERE', EMAILJS_SERVICE_ID='YOUR_SERVICE_ID', EMAILJS_TEMPLATE_ID='YOUR_TEMPLATE_ID';
   if (EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY!=='YOUR_PUBLIC_KEY_HERE') emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
 
   /* ===== DOM ===== */
-  const elSlotsLeft   = document.getElementById('slots-left');
-  const elSlotsBooked = document.getElementById('slots-booked');
-  const elSlotbar     = document.getElementById('slotbar-fill');
-  const regError      = document.getElementById('regError');
-
   const form          = document.getElementById('regForm');
   const qtySel        = document.getElementById('qty');
   const totalPriceEl  = document.getElementById('totalPrice');
   const submitBtn     = document.getElementById('submitReg');
   const regStatus     = document.getElementById('regStatus');
+  const regError      = document.getElementById('regError');
 
   const payMethodInputs = document.querySelectorAll('input[name="payMethod"]');
   const qrBlock    = document.getElementById('qrBlock');
   const bankBlock  = document.getElementById('bankBlock');
-  const paidConfirm= document.getElementById('paidConfirm');
+  const QRpaidConfirm= document.getElementById('QRpaidConfirm');
+  const BankpaidConfirm= document.getElementById('BankpaidConfirm');
   const payRef     = document.getElementById('payRef');
   const bankRef    = document.getElementById('bankRef');
   const qrAmount   = document.getElementById('qrAmount');
   const bankAmount = document.getElementById('bankAmount');
-  const qrRefCode  = document.getElementById('qrRefCode');
   const qrProof    = document.getElementById('qrProof');
   const bankProof  = document.getElementById('bankProof');
   const qrPreview  = document.getElementById('qrPreview');
   const bankPreview= document.getElementById('bankPreview');
 
-  // --- Pre-open a tab so the browser treats it as user-initiated.
-// Only do this when we're using the Gmail/mailto path (i.e., EmailJS not configured).
-let composeWin = null;
-submitBtn.addEventListener('click', () => {
-  const usingEmailJS = EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY_HERE';
-  if (!usingEmailJS) {
-    // open a blank tab now; we'll navigate it after the async API finishes
-    composeWin = window.open('about:blank', '_blank');
-  }
-});
-
-
-  /* ===== Helpers (no globals) ===== */
+  /* ===== Helpers ===== */
   const notify = (m)=>alert(m);
   const currentPayMethod = ()=> {
     const m=[...payMethodInputs].find(r=>r.checked); return m?m.value:'cash';
   };
+  const isIOS = ()=>/iPad|iPhone|iPod/.test(navigator.userAgent);
+  const isAndroid = ()=>/Android/.test(navigator.userAgent);
+
+  // Prefer Gmail app on phones; fall back to native Mail (iOS) or chooser (Android); web Gmail on desktop.
+  function openEmailAppCompose({ to, subject, body }) {
+    const mailto =
+      `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    if (isIOS()){
+      const gmailURL =
+        `googlegmail://co?to=${encodeURIComponent(to)}&subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const start = Date.now();
+      // Try Gmail app
+      window.location.href = gmailURL;
+      // If not installed, fall back to iOS Mail
+      setTimeout(()=>{ if (Date.now() - start < 1600) window.location.href = mailto; }, 700);
+      return;
+    }
+
+    if (isAndroid()){
+      // mailto opens the user's email app; if Gmail is default it opens Gmail.
+      window.location.href = mailto;
+      return;
+    }
+
+    // Desktop -> Gmail web compose
+    const webGmail =
+      `https://mail.google.com/mail/?view=cm&fs=1&tf=1` +
+      `&to=${encodeURIComponent(to)}` +
+      `&su=${encodeURIComponent(subject)}` +
+      `&body=${encodeURIComponent(body)}`;
+    window.location.href = webGmail;
+  }
+
   function refreshPrice(){
     const total=(Number(qtySel.value)||1)*PRICE;
     totalPriceEl.textContent=String(total);
@@ -550,7 +606,6 @@ submitBtn.addEventListener('click', () => {
     const method=currentPayMethod();
     qrBlock.style.display   = method==='qr'   ? 'block' : 'none';
     bankBlock.style.display = method==='bank' ? 'block' : 'none';
-    qrRefCode.textContent = (Date.now().toString(36).toUpperCase()).slice(-6);
     refreshPrice();
   }
   function previewFile(inputEl, previewEl){
@@ -562,52 +617,6 @@ submitBtn.addEventListener('click', () => {
     reader.readAsDataURL(file);
   }
 
-  // Open Gmail compose in a new tab; fall back to mailto if blocked.
-function openCompose({ to, subject, body }) {
-  const gmailURL =
-    `https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=${encodeURIComponent(to)}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-  // Try Gmail web first (desktop/mobile browsers). If popup blocked, fall back to mailto.
-  const win = window.open(gmailURL, '_blank', 'noopener,noreferrer');
-  if (!win) {
-    window.location.href = `mailto:${encodeURIComponent(to)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  }
-}
-
-
-    function openGmailCompose({ to, subject, body }) {
-  const url =
-    `https://mail.google.com/mail/?view=cm&fs=1&tf=1` +
-    `&to=${encodeURIComponent(to)}` +
-    `&su=${encodeURIComponent(subject)}` +
-    `&body=${encodeURIComponent(body)}`;
-
-  // Prefer navigating the pre-opened tab (avoids popup blockers)
-  if (composeWin && !composeWin.closed) {
-    try {
-      composeWin.location.href = url;   // navigate that tab
-      return;
-    } catch (_) { /* fall through */ }
-  }
-
-  // If we can't use the pre-opened tab, try same-tab (no popup)
-  try {
-    window.location.href = url;
-  } catch (_) {
-    // absolute last resort
-    window.open(url, '_blank');
-  }
-}
-
-
-  /* ===== API ===== */
-  async function apiGetStats(){
-    const res=await fetch(API_URL+'?fn=stats',{method:'GET',cache:'no-store'});
-    const text=await res.text();
-    let data; try { data = JSON.parse(text); } catch(e){ throw new Error('Bad JSON: '+text); }
-    if(!res.ok || !data.ok) throw new Error((data && data.error) || ('HTTP '+res.status));
-    return data;
-  }
   async function apiRegister(payload){
     const res=await fetch(API_URL,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
     const text=await res.text(); let data;
@@ -615,46 +624,49 @@ function openCompose({ to, subject, body }) {
     if(!res.ok || !data.ok) throw new Error(data.error || ('HTTP '+res.status));
     return data;
   }
-  function updateSlotsUI(stats){
-    const booked=Number(stats.booked||0), remaining=Math.max(0, Number(stats.remaining||0));
-    elSlotsBooked.textContent=booked; elSlotsLeft.textContent=remaining;
-    elSlotbar.style.width=Math.min(100,(booked/CAPACITY)*100)+'%';
-    const soldOut = remaining<=0;
-    submitBtn.disabled=soldOut; submitBtn.textContent=soldOut?'Sold Out':'Reserve My Spot';
-    submitBtn.style.opacity = soldOut ? .6 : 1;
-  }
 
   /* ===== Init ===== */
-  document.addEventListener('DOMContentLoaded', async ()=>{
+  document.addEventListener('DOMContentLoaded', ()=>{
     payMethodInputs.forEach(r=>r.addEventListener('change',updatePaymentUI));
     qtySel.addEventListener('change',refreshPrice);
     qrProof.addEventListener('change',()=>previewFile(qrProof,qrPreview));
     bankProof.addEventListener('change',()=>previewFile(bankProof,bankPreview));
-
     refreshPrice(); updatePaymentUI();
-
-    try { updateSlotsUI(await apiGetStats()); regError.style.display='none'; }
-    catch(err){ regError.style.display='block'; regError.textContent='Could not load live capacity: '+err.message; }
   });
 
   /* ===== Submit ===== */
   form.addEventListener('submit', async (e)=>{
-    e.preventDefault(); regStatus.textContent='';
+    e.preventDefault(); regStatus.textContent=''; regError.style.display='none';
+
     const fullName=document.getElementById('fullName').value.trim();
     const email=document.getElementById('email').value.trim();
     const qty=Number(qtySel.value)||1;
-    const note=document.getElementById('note').value.trim();
+    const noteEl=document.getElementById('note');
+    const note=noteEl.value.trim();
     const total=qty*PRICE;
 
-    if(!fullName || !email){ notify('Please fill your name and a valid email.'); return; }
+    if(!fullName || !email){
+      notify('Please fill your name and a valid email.');
+      return;
+    }
+
+    if(!note){
+      const msg='Please enter your TP Number.';
+      noteEl.setCustomValidity(msg);
+      noteEl.reportValidity();
+      noteEl.addEventListener('input', ()=>noteEl.setCustomValidity(''), { once:true });
+      regError.style.display='block'; regError.textContent = msg;
+      return;
+    }
 
     const payMethod=currentPayMethod(); let reference=''; let proofDataURL='';
     if(payMethod==='qr'){
-      if(!paidConfirm || !paidConfirm.checked){ notify('Tick the confirmation box after completing the QR/transfer.'); return; }
+      if(!QRpaidConfirm || !QRpaidConfirm.checked){ notify('Tick the confirmation box after completing the QR/transfer.'); return; }
       if(!qrPreview.dataset.base64){ notify('Please upload your QR payment screenshot.'); return; }
       proofDataURL=qrPreview.dataset.base64; reference=(payRef && payRef.value || '').trim();
     }
     if(payMethod==='bank'){
+      if(!BankpaidConfirm || !BankpaidConfirm.checked){ notify('Tick the confirmation box after completing the Bank/transfer.'); return; }
       if(!bankPreview.dataset.base64){ notify('Please upload your bank/card receipt screenshot.'); return; }
       proofDataURL=bankPreview.dataset.base64; reference=(bankRef && bankRef.value || '').trim();
     }
@@ -662,7 +674,6 @@ function openCompose({ to, subject, body }) {
     submitBtn.disabled=true; submitBtn.textContent='Processing…';
     try {
       const resp=await apiRegister({ fullName,email,qty,total,payMethod,reference,note,imageDataURL:proofDataURL || '' });
-      updateSlotsUI(resp);
 
       const proofLink=resp.proofUrl || '';
       if (EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY!=='YOUR_PUBLIC_KEY_HERE'){
@@ -672,28 +683,26 @@ function openCompose({ to, subject, body }) {
           pay_method:payMethod, pay_reference:reference || '', proof_link:proofLink
         });
       } else {
-  const subject = 'Hallow Trials Registration';
-  const lines = [
-    'New registration:',
-    `Name: ${fullName}`,
-    `Email: ${email}`,
-    `Qty: ${qty}`,
-    `Total: RM ${total}`,
-    `Payment: ${payMethod}${reference ? ' ('+reference+')' : ''}`,
-    `Proof link: ${proofLink || '-'}`,
-    `Note: ${note || '-'}`
-  ];
+        const subject = 'Hallow Trials Registration';
+        const lines = [
+          'New registration:',
+          `Name: ${fullName}`,
+          `Email: ${email}`,
+          `Qty: ${qty}`,
+          `Total: RM ${total}`,
+          `Payment: ${payMethod}${reference ? ' ('+reference+')' : ''}`,
+          `Proof link: ${proofLink || '-'}`,
+          `TPNumber: ${note || '-'}`
+        ];
+        // 👇 opens Gmail app on iOS if installed; mail app fallback; Android uses default email app (often Gmail)
+        openEmailAppCompose({
+          to: 'hallowtrials@gmail.com',
+          subject,
+          body: lines.join('\n')
+        });
+      }
 
-  openGmailCompose({
-    to: 'hallowtrials@gmail.com',
-    subject,
-    body: lines.join('\n')
-  });
-}
-
-
-
-      notify('Booking received! Check your email.');
+      notify('Booking received! Check your email draft.');
       regStatus.textContent=`Booked ${qty} ticket(s). Total RM${total}.`;
       form.reset(); refreshPrice(); updatePaymentUI();
       [qrPreview,bankPreview].forEach(el=>{el.style.display='none';el.innerHTML='';delete el.dataset.base64;});
@@ -709,8 +718,9 @@ function openCompose({ to, subject, body }) {
 </script>
 <!-- REGISTER END -->
 
+  
+  <!-- (Register section intentionally not present in this version) -->
 
-  <!-- ===== Footer ===== -->
   <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
       <div class="f-logo" aria-label="Site logo">
@@ -736,7 +746,7 @@ function openCompose({ to, subject, body }) {
           <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.4-1C16.8 2.6 12 2.6 12 2.6h-.1s-4.8 0-8.2.3c-.5.1-1.5.1-2.4 1-.7.7-.9 2.3-.9 2.3S0 8.2 0 10.3v1.5c0 2.1.2 4.1.2 4.1s.2 1.6.9 2.3c.9.9 2.1.9 2.7 1 2 .2 8.2.3 8.2.3s4.8 0 8.2-.3c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.3.9-2.3s.2-2 .2-4.1v-1.5c0-2.1-.2-4.1-.2-4.1zM9.6 14.7v-5.3l5.6 2.7-5.6 2.6z"/></svg>
         </a>
         <a href="https://www.instagram.com/hallowtrials/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2A2.8 2.8 0 1 0 12 15.8 2.8 2.8 0 0 0 12 9.2zm6.2-.9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2A2.8 2.8 0 1 0 12 15.8 2.8 2.8 0 0 0 12 9.2zm6.2-.9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
         </a>
       </div>
     </div>
@@ -794,7 +804,7 @@ function openCompose({ to, subject, body }) {
       {id:3, code:'TAPE-02', title:'Cassette', room:'E-09-02', img:'Cassette.jpeg'},
       {id:4, code:'LIGHT-08', title:'Light of Death', room:'D-08-08', img:'Light Of Death.jpeg'},
       {id:5, code:'MAP-01', title:'Map of Doom', room:'E-08-01', img:'Map Of Doom.jpeg'},
-      {id:6, code:'CURSE-07', title:'The Curse', room:'Level 7 (Block E to D, Every Class)', img:' The Curse.jpeg'},
+      {id:6, code:'CURSE-07', title:'The Curse', room:'Level 7 (Block E to D, Every Class)', img:'The Curse.jpeg'},
       {id:7, code:'JIANGSHI-01', title:'Jiangshi', room:'S-08-01', img:'Jiangshi.jpeg'},
       {id:8, code:'DOORS-3', title:'Three Doors', room:'E-08-11 / S-08-05 / S-08-06 / S-08-07', img:'Three Doors.jpeg'},
       {id:9, code:'RUSSIAN-07', title:'Russian Roulette', room:'S-07-02', img:'Russian Roulette.jpeg'}
@@ -885,7 +895,6 @@ function openCompose({ to, subject, body }) {
       showToast('Progress reset.');
     });
   </script>
-
   
 </body>
 </html>
