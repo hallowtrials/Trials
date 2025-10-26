@@ -145,8 +145,7 @@
     .game-card h3{font-family:Cinzel,serif;font-size:18px}
     .game-card .loc{color:var(--ash);font-size:14px}
 
-    /* ===== Register ===== */
-    #register .btn{display:inline-block;border:none;background:linear-gradient(180deg,#1c1529,#0f0a14);color:#e6e3ff;padding:14px 24px;border-radius:14px;font-weight:700;text-decoration:none}
+
 
     /* ===== Footer ===== */
     .site-footer{margin-top:64px;background:#0b0b10;border-top:1px solid rgba(255,255,255,.06)}
@@ -196,11 +195,17 @@
       /* Countdown */
       .tiles{grid-template-columns:repeat(2, minmax(0,1fr));max-width:520px}
 
-      /* Short video (smaller on mobile) */
-      .short-video{flex-direction:column;gap:16px;text-align:center}
+      /* Short video (FIXED: no stretching, smaller width) */
+      .short-video{
+        flex-direction:column;gap:16px;text-align:center;align-items:center;
+      }
       .short-video-card{
+        flex:0 0 auto !important;  /* stop flex-grow stretch in column layout */
+        width:min(90vw,420px);
+        aspect-ratio:16/9;
+        height:auto;
+        margin:0 auto;
         border-radius:16px;
-        width:min(90vw,420px); /* smaller than desktop */
       }
       .short-video-card iframe{border-radius:16px}
 
@@ -356,7 +361,6 @@
         <a href="#countdown">Countdown</a>
         <a href="#video">Videos</a>
         <a href="#games">Games</a>
-        <a href="#register">Register</a>
       </nav>
 
       <div class="f-social" aria-label="Social links">
@@ -369,7 +373,7 @@
       </div>
     </div>
 
-  <div class="footer-rule"></div>
+    <div class="footer-rule"></div>
 
     <div class="foot-bottom">
       <span>© Copyright. All rights reserved.</span>
