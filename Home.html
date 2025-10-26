@@ -35,19 +35,19 @@
       padding-top: max(0px, var(--safe-top));
     }
     nav{
-      max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:24px;
-      padding:14px 20px;width:100%;min-height:var(--header-h);
+      max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:16px;
+      padding:12px 16px;width:100%;min-height:var(--header-h);
     }
-    .brand{font-family:Cinzel,serif;letter-spacing:3px;font-weight:700;font-size:22px;color:var(--ink)}
+    .brand{font-family:Cinzel,serif;letter-spacing:3px;font-weight:700;font-size:22px;color:var(--ink);white-space:nowrap}
     .brand .glyph{color:var(--blood)}
-    .navlinks{margin-left:auto;display:flex;gap:24px;flex-wrap:wrap}
-    .navlinks a{opacity:.9;font-weight:600;color:var(--ink);transition:.2s;font-size:15px}
-    .navlinks a:hover{color:var(--blood)}
+    .navlinks{margin-left:auto;display:flex;gap:16px;flex-wrap:nowrap;overflow:visible;max-width:none}
+    .navlinks a{opacity:.9;font-weight:600;color:var(--ink);transition:.2s;font-size:15px;scroll-snap-align:center;flex:0 0 auto;padding:6px 8px;border-radius:10px}
+    .navlinks a:hover{color:var(--blood);background:rgba(255,255,255,.03)}
 
     /* Sections */
     section{
       width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;
-      padding: clamp(56px, 8vh, 120px) 20px;
+      padding: clamp(48px, 7vh, 110px) 20px;
       scroll-margin-top: calc(var(--header-h) + 14px);
     }
     .section-full{min-height:100vh}
@@ -59,34 +59,34 @@
       gap:44px;align-items:center;
     }
     .hero-left{width:100%;max-width:880px;justify-self:stretch}
-    .title{font-family:Cinzel,serif;font-size:clamp(42px,6vw,80px);margin:0 0 16px;text-shadow:0 0 40px rgba(107,77,255,.35)}
+    .title{font-family:Cinzel,serif;font-size:clamp(36px,6vw,80px);margin:0 0 12px;text-shadow:0 0 40px rgba(107,77,255,.35)}
     .cotitle{
-      font-family:Cinzel,serif;font-size: clamp(22px,3.2vw,30px);margin:0 0 16px;
+      font-family:Cinzel,serif;font-size: clamp(18px,3vw,28px);margin:0 0 14px;
       text-shadow:0 0 40px rgba(107,77,255,.14);
       display:inline-block;padding:.35em .6em;border:1px solid rgba(230,227,255,.22);
       border-radius:14px;box-shadow:0 0 0 1px rgba(161,4,35,.28) inset, 0 8px 24px rgba(0,0,0,.35);
       background:radial-gradient(120% 140% at 0% 0%, rgba(139,0,25,.1), transparent 60%), linear-gradient(180deg,#6403032c,transparent);
     }
-    .subtitle{color:var(--ash);margin-bottom:16px;line-height:1.7;font-size:18px}
+    .subtitle{color:var(--ash);margin-bottom:16px;line-height:1.7;font-size:17px}
 
     .panel{
-      background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:20px;
-      padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.6);position:relative;overflow:visible;width:100%;
+      background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:18px;
+      padding:20px;box-shadow:0 10px 30px rgba(0,0,0,.6);position:relative;overflow:visible;width:100%;
     }
-    .panel h3{font-family:Cinzel,serif;font-size:24px;margin-bottom:12px}
+    .panel h3{font-family:Cinzel,serif;font-size:22px;margin-bottom:10px}
     .panel::before,.panel::after{
-      content:"";position:absolute;top:-26px;width:80px;height:80px;opacity:.55;pointer-events:none;
+      content:"";position:absolute;top:-22px;width:70px;height:70px;opacity:.5;pointer-events:none;
       background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><g fill='none' stroke='%23bfb9ff' stroke-opacity='.6'><path d='M0 80C0 53 27 26 54 26M0 80C0 41 39 2 78 2M0 80C0 65 15 50 30 50'/><path d='M0 80L0 0 80 0'/><path d='M0 56Q20 56 28 48'/><path d='M0 32Q38 32 56 14'/></g></svg>") center/contain no-repeat;
       filter:drop-shadow(0 4px 12px rgba(0,0,0,.4));
     }
-    .panel::before{left:-22px}
-    .panel::after{right:-22px;transform:scaleX(-1)}
+    .panel::before{left:-18px}
+    .panel::after{right:-18px;transform:scaleX(-1)}
 
     .hero-right{
-      position:relative;width:100%;border-radius:22px;overflow:hidden;
-      box-shadow:0 0 30px 2px rgba(158,1,1,.9);background:#0f0a14;aspect-ratio: 4.2 / 5;
+      position:relative;width:100%;border-radius:20px;overflow:hidden;
+      box-shadow:0 0 26px 1px rgba(158,1,1,.8);background:#0f0a14;aspect-ratio: 3 / 4;
     }
-    .hero-right img{display:block;width:100%;height:100%;object-fit:cover;filter:contrast(4.5) brightness(.8) saturate(3.5)}
+    .hero-right img{display:block;width:100%;height:100%;object-fit:cover;filter:contrast(4.2) brightness(.82) saturate(3.2)}
     .hero-right::after{
       content:"";position:absolute;inset:0;pointer-events:none;
       background:radial-gradient(400px 180px at 20% 0, rgba(255,255,255,.06), transparent 60%),
@@ -97,21 +97,21 @@
     /* ===== Countdown (CENTERED) ===== */
     #countdown .cd-wrap{
       max-width:var(--max);margin:0 auto;width:100%;
-      display:grid;place-items:center;text-align:center;gap:24px;
+      display:grid;place-items:center;text-align:center;gap:20px;
     }
-    .cd-title{font-family:Cinzel,serif;font-size:clamp(34px,5.5vw,70px);line-height:1.05}
-    .cd-sub{color:var(--ash);margin-top:10px;max-width:800px}
+    .cd-title{font-family:Cinzel,serif;font-size:clamp(28px,5.2vw,70px);line-height:1.05}
+    .cd-sub{color:var(--ash);margin-top:8px;max-width:820px}
     .tiles{
-      display:grid;grid-template-columns:repeat(4,minmax(120px,1fr));
-      gap:14px;margin-top:24px;width:100%;max-width:820px;
+      display:grid;grid-template-columns:repeat(4,minmax(100px,1fr));
+      gap:12px;margin-top:18px;width:100%;max-width:760px;
     }
     .tile{
       background:radial-gradient(160% 120% at 50% 0%, #1b1324 0%, #110c16 50%, #0d0b12 100%);
-      border:1px solid rgba(255,255,255,.08);border-radius:18px;
+      border:1px solid rgba(255,255,255,.08);border-radius:16px;
       box-shadow:0 10px 30px rgba(0,0,0,.55), inset 0 0 40px rgba(177,15,46,.08);
-      padding:18px;text-align:center;position:relative;overflow:hidden
+      padding:16px;text-align:center;position:relative;overflow:hidden
     }
-    .tile .num{font-feature-settings:"tnum" 1;font-variant-numeric:tabular-nums;font-weight:700;font-size:clamp(34px,6vw,60px);letter-spacing:1px;text-shadow:0 0 24px rgba(255,0,60,.25)}
+    .tile .num{font-feature-settings:"tnum" 1;font-variant-numeric:tabular-nums;font-weight:700;font-size:clamp(30px,6vw,60px);letter-spacing:1px;text-shadow:0 0 24px rgba(255,0,60,.25)}
     .tile .lbl{color:var(--ash);font-size:13px;letter-spacing:.2px;margin-top:6px}
     .flicker{animation:flick .9s infinite steps(2,end)}
     @keyframes flick{0%,100%{opacity:1}50%{opacity:.72}}
@@ -120,19 +120,19 @@
       linear-gradient(var(--blood),var(--blood)) 0 0/100% 12px no-repeat;opacity:.6;filter:blur(.2px)}
 
     /* ===== Short Video ===== */
-    .short-video{flex-direction:row;max-width:var(--max);gap:60px;align-items:center;margin:0 auto;width:100%}
+    .short-video{flex-direction:row;max-width:var(--max);gap:40px;align-items:center;margin:0 auto;width:100%}
     .short-video-text{flex:1}
-    .short-video-text h3{font-family:Cinzel,serif;font-size:clamp(32px,4vw,44px);margin-bottom:16px}
-    .short-video-text p{color:var(--ash);line-height:1.7;font-size:18px}
-    .short-video-card{flex:1;position:relative;overflow:hidden;border-radius:20px;border:1px solid rgba(255,255,255,.08);background:#0f0a14;box-shadow:0 20px 40px rgba(0,0,0,.6);aspect-ratio:16/9}
-    .short-video-card iframe{width:100%;height:100%;border:0;border-radius:20px;display:block}
+    .short-video-text h3{font-family:Cinzel,serif;font-size:clamp(28px,4vw,44px);margin-bottom:12px}
+    .short-video-text p{color:var(--ash);line-height:1.7;font-size:17px}
+    .short-video-card{flex:1;position:relative;overflow:hidden;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:#0f0a14;box-shadow:0 20px 40px rgba(0,0,0,.6);aspect-ratio:16/9;width:min(88vw,560px)}
+    .short-video-card iframe{width:100%;height:100%;border:0;border-radius:18px;display:block}
 
     /* ===== Games gallery (2x2 fixed) ===== */
     #games{max-width:var(--max);margin:0 auto;width:100%}
     .games-intro{max-width:820px;text-align:center;color:var(--ash)}
     .game-grid{
-      width:100%;display:grid;gap:18px;margin-top:26px;
-      grid-template-columns:repeat(2, minmax(0,1fr));   /* 2 columns */
+      width:100%;display:grid;gap:16px;margin-top:22px;
+      grid-template-columns:repeat(2, minmax(0,1fr));
     }
     .game-card{
       position:relative;overflow:hidden;border-radius:16px;background:#0f0a14;
@@ -140,62 +140,94 @@
       transition:transform .12s ease;
     }
     .game-card:hover{transform:translateY(-2px)}
-    .game-card img{display:block;width:100%;height:240px;object-fit:cover}
-    .game-card .meta{padding:14px;display:flex;flex-direction:column;gap:6px;background:linear-gradient(180deg, rgba(255,255,255,.02), transparent)}
+    .game-card img{display:block;width:100%;height:220px;object-fit:cover}
+    .game-card .meta{padding:12px;display:flex;flex-direction:column;gap:6px;background:linear-gradient(180deg, rgba(255,255,255,.02), transparent)}
     .game-card h3{font-family:Cinzel,serif;font-size:18px}
     .game-card .loc{color:var(--ash);font-size:14px}
 
-    /* ===== Register ===== */
-    #register .btn{display:inline-block;border:none;background:linear-gradient(180deg,#1c1529,#0f0a14);color:#e6e3ff;padding:14px 24px;border-radius:14px;font-weight:700;text-decoration:none}
 
     /* ===== Footer ===== */
-    .site-footer{margin-top:80px;background:#0b0b10;border-top:1px solid rgba(255,255,255,.06)}
-    .footer-inner{max-width:var(--max);margin:0 auto;padding:34px 24px 22px;display:flex;align-items:center;gap:26px}
-    .f-logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:2px}
-    .f-logo svg{width:34px;height:34px}
-    .f-nav{margin-left:auto;margin-right:auto;display:flex;gap:28px;color:#cfc9ea;font-weight:600;font-size:14px;opacity:.9}
+    .site-footer{margin-top:64px;background:#0b0b10;border-top:1px solid rgba(255,255,255,.06)}
+    .footer-inner{max-width:var(--max);margin:0 auto;padding:28px 16px 18px;display:flex;align-items:center;gap:16px}
+    .f-logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:2px}
+    .f-logo svg{width:32px;height:32px}
+    .f-nav{margin-left:auto;margin-right:auto;display:flex;gap:18px;color:#cfc9ea;font-weight:600;font-size:14px;opacity:.9;flex-wrap:wrap;justify-content:center}
     .f-nav a{opacity:.85}
     .f-nav a:hover{opacity:1;color:var(--blood)}
-    .f-social{display:flex;gap:14px}
+    .f-social{display:flex;gap:12px}
     .f-social a{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.12);opacity:.9}
     .f-social a:hover{opacity:1;border-color:rgba(255,255,255,.35)}
     .f-social svg{width:16px;height:16px;fill:#d9d5ff}
     .footer-rule{max-width:var(--max);margin:6px auto 0;border-top:1px solid rgba(255,255,255,.08)}
-    .foot-bottom{max-width:var(--max);margin:0 auto;padding:14px 24px 34px;display:flex;justify-content:center;gap:10px;color:#bdb7d8;font-size:13px;opacity:.85}
+    .foot-bottom{max-width:var(--max);margin:0 auto;padding:12px 16px 28px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;color:#bdb7d8;font-size:13px;opacity:.85;text-align:center}
     .made-by{margin-left:8px;display:flex;gap:6px;align-items:center}
     .ash-logo{display:inline-flex;align-items:center;gap:6px;padding:3px 8px;border:1px solid rgba(255,255,255,.12);border-radius:999px}
     .ash-logo svg{width:18px;height:18px}
     .ash-logo b{letter-spacing:1.3px}
 
-    /* ====== Phone & Tablet ====== */
-    /* Keep 2 columns even on phones */
-    @media (max-width: 640px){
-      nav{padding:12px 16px;gap:10px}
-      .brand{font-size:20px}
-      .navlinks{gap:14px}
-      section{padding:56px 16px}
+    /* ====== Responsive: Phones & Small Tablets ====== */
+    @media (max-width: 820px){
+      :root{ --header-h: 60px; }
+
+      /* Header + nav: brand on first row, 3 links on second row */
+      nav{padding:10px 14px;flex-wrap:wrap}
+      .brand{font-size:18px;letter-spacing:2px;flex:1 1 100%;text-align:center}
+      .navlinks{flex:1 1 100%;display:flex;justify-content:space-between;align-items:center;gap:12px;overflow:visible}
+      .navlinks a{font-size:14px;padding:6px 8px}
+
+      /* Hero */
       .hero{grid-template-columns:1fr;gap:18px}
+      .hero-left{max-width:640px;justify-self:center}
+      .title{font-size:clamp(30px,7.2vw,52px)}
+      .cotitle{font-size:clamp(16px,3.6vw,22px)}
+      .subtitle{font-size:16px}
+      .panel{padding:16px}
       .hero-right{aspect-ratio:3/4}
-      .panel{padding:18px}
 
-      .tiles{gap:10px}
-      .tile{padding:14px}
+      /* Countdown */
+      .tiles{grid-template-columns:repeat(2, minmax(0,1fr));max-width:520px}
 
-      .short-video{flex-direction:column;gap:16px;text-align:center}
-      .short-video-card{border-radius:16px}
+      /* Short video (no stretch + smaller width) */
+      .short-video{flex-direction:column;gap:16px;text-align:center;align-items:center}
+      .short-video-card{flex:0 0 auto !important;width:min(90vw,420px);aspect-ratio:16/9;height:auto;margin:0 auto;border-radius:16px}
       .short-video-card iframe{border-radius:16px}
 
+      /* REMOVE GAP in #video section on phones */
+      #video{min-height:auto;justify-content:flex-start;padding-top:20px;padding-bottom:24px}
+      #video .short-video-text{margin-bottom:8px}
+
+      /* Games */
       .game-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
       .game-card img{height:200px}
+
+      .f-social{margin-left:auto}
     }
-    @media (min-width: 641px) and (max-width: 1024px){
-      .hero{grid-template-columns:1fr 1fr;gap:28px}
-      .short-video{gap:28px}
-      .game-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
-      .game-card img{height:220px}
+
+    /* Super small phones: single column game grid, tighter spacing */
+    @media (max-width: 480px){
+      :root{ --header-h: 56px; }
+
+      nav{gap:10px}
+      .navlinks{gap:10px;justify-content:space-between}
+      .navlinks a{font-size:13px;padding:6px 6px}
+
+      section{padding:40px 14px}
+      .tiles{gap:10px}
+      .tile{padding:14px}
+      .cd-title{font-size:clamp(26px,7vw,40px)}
+
+      .game-grid{grid-template-columns:1fr}
+      .game-card img{height:190px}
+
+      /* Short video even smaller on tiny phones */
+      .short-video-card{width:min(86vw,320px)}
+      #video{padding-top:16px;padding-bottom:20px}
     }
-    @media (min-width: 1025px){
-      .hero-right{aspect-ratio:4.2/5}
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .flicker{animation:none}
+      html{scroll-behavior:auto}
     }
   </style>
 </head>
@@ -203,10 +235,9 @@
   <header>
     <nav>
       <div class="brand"><span class="glyph">𓉸</span><a href="#home"> HALLOW TRIALS</a></div>
-      <div class="navlinks">
-        <!-- No Home in menu -->
+      <div class="navlinks" aria-label="Primary navigation">
         <a href="#countdown">Countdown</a>
-        <a href="#video">Short Videos</a>
+        <a href="#video">Short Video</a>
         <a href="#games">Games</a>
       </div>
     </nav>
@@ -217,7 +248,7 @@
     <div class="hero-left">
       <h1 class="title">Enter the <span style="color:var(--blood)">Trials</span></h1>
       <h2 class="cotitle"><span style="color:var(--blood)">Certificate Will Be Provided!</span></h2>
-      <p class="subtitle">The School of Foundation and the Visual Cinematography Club presents a one time Halloween event filled with Escape Rooms and Scary Thrills around the APU Campus! Watch our trailer and follow our Instagram page!</p><br><br> 
+      <p class="subtitle">The School of Foundation and the Visual Cinematography Club presents a one time Halloween event filled with Escape Rooms and Scary Thrills around the APU Campus! Watch our trailer and follow our Instagram page!</p><br><br>
 
       <div class="panel" aria-label="Event Details">
         <h3>Event Details</h3>
@@ -250,7 +281,7 @@
   <!-- ===== SHORT VIDEOS (full) ===== -->
   <section id="video" class="short-video section-full">
     <div class="short-video-text">
-      <h3>Short Videos</h3>
+      <h3>Short Video</h3>
       <p>Get a sneak peek into the haunted halls. Watch this teaser to feel the chill before you enter the Trials.</p>
     </div>
     <div class="short-video-card">
@@ -269,9 +300,9 @@
     </div>
   </section>
 
-  <!-- ===== GAMES (2x2) ===== -->
+  <!-- ===== GAMES (responsive) ===== -->
   <section id="games" class="section-full">
-    <h2 class="title" style="font-size:clamp(34px,4.6vw,56px);text-align:center;">
+    <h2 class="title" style="font-size:clamp(28px,4.6vw,56px);text-align:center;">
       Tonight’s <span style="color:var(--blood)">Games</span>
     </h2>
     <p class="games-intro">
@@ -315,15 +346,14 @@
         <a href="#countdown">Countdown</a>
         <a href="#video">Videos</a>
         <a href="#games">Games</a>
-        <a href="#register">Register</a>
       </nav>
 
       <div class="f-social" aria-label="Social links">
         <a href="https://www.youtube.com/@APUvcc" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
-          <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.4-1C16.8 2.6 12 2.6 12 2.6h-.1s-4.8 0-8.2.3c-.5.1-1.5.1-2.4 1-.7.7-.9 2.3-.9 2.3S0 8.2 0 10.3v1.5c0 2.1.2 4.1.2 4.1s.2 1.6.9 2.3c.9.9 2.1.9 2.7 1 2 .2 8.2.3 8.2.3s4.8 0 8.2-.3c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.3.9-2.3s.2-2 .2-4.1v-1.5c0-2.1-.2-4.1-.2-4.1zM9.6 14.7v-5.3l5.6 2.7-5.6 2.6z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.4-1C16.8 2.6 12 2.6 12 2.6h-.1s-4.8 0-8.2.3c-.5.1-1.5.1-2.4 1-.7.7-.9 2.3-.9 2.3S0 8.2 0 10.3v1.5c0 2.1.2 4.1.2 4.1s.2 1.6.9 2.3c.9.9 2.1.9 2.7 1 2 .2 8.2 .3 8.2 .3s4.8 0 8.2-.3c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.3.9-2.3s.2-2 .2-4.1v-1.5c0-2.1-.2-4.1-.2-4.1zM9.6 14.7v-5.3l5.6 2.7-5.6 2.6z"/></svg>
         </a>
         <a href="https://www.instagram.com/hallowtrials/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
-          <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2A2.8 2.8 0 1 0 12 15.8 2.8 2.8 0 0 0 12 9.2zm6.2-.9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
+          <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1 5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2A2.8 2.8 0 1 0 12 15.8 2.8 2.8 0 0 0 12 9.2zm6.2-.9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
         </a>
       </div>
     </div>
