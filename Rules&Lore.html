@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Hallow Trials — Enter if you dare</title>
+  <link rel="icon" href="ht-removebg-preview.png" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0a0f;--bg-2:#0f0a12;--ink:#e6e3ff;--ash:#9a94b8;--blood:#b10f2e;--ecto:#6b4dff;
+      --card:#121018;--max:1400px;
+      --safe-top: env(safe-area-inset-top);--safe-bottom: env(safe-area-inset-bottom);
+      --header-h: 72px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;font-family:Inter,sans-serif;color:var(--ink);
+      background:linear-gradient(180deg,var(--bg),var(--bg-2));
+      min-height:100vh;display:flex;flex-direction:column;
+      -webkit-tap-highlight-color: transparent;
+      padding-bottom: var(--safe-bottom);
+    }
+    a{color:inherit;text-decoration:none}
+
+    /* Sticky header */
+    header{
+      position:sticky;top:0;z-index:30;
+      background:rgba(10,10,15,.9);backdrop-filter:blur(6px);
+      border-bottom:1px solid rgba(255,255,255,.05);
+      padding-top: max(0px, var(--safe-top));
+    }
+    nav{
+      max-width:var(--max);margin:0 auto;display:flex;align-items:center;gap:16px;
+      padding:12px 16px;width:100%;min-height:var(--header-h);
+    }
+    .brand{font-family:Cinzel,serif;letter-spacing:3px;font-weight:700;font-size:22px;color:var(--ink);white-space:nowrap}
+    .brand .glyph{color:var(--blood)}
+    .navlinks{margin-left:auto;display:flex;gap:16px;flex-wrap:nowrap;overflow:visible;max-width:none}
+    .navlinks a{opacity:.9;font-weight:600;color:var(--ink);transition:.2s;font-size:15px;scroll-snap-align:center;flex:0 0 auto;padding:6px 8px;border-radius:10px}
+    .navlinks a:hover{color:var(--blood);background:rgba(255,255,255,.03)}
+
+    /* Sections */
+    section{
+      width:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;
+      padding: clamp(48px, 7vh, 110px) 20px;
+      scroll-margin-top: calc(var(--header-h) + 14px);
+    }
+    .section-full{min-height:100vh}
+
+    /* ===== HERO ===== */
+    .hero{
+      max-width:var(--max);margin:0 auto;width:100%;
+      display:grid;grid-template-columns:minmax(300px,1.1fr) minmax(280px,.9fr);
+      gap:44px;align-items:center;
+    }
+    .hero-left{width:100%;max-width:880px;justify-self:stretch}
+    .title{font-family:Cinzel,serif;font-size:clamp(36px,6vw,80px);margin:0 0 12px;text-shadow:0 0 40px rgba(107,77,255,.35)}
+    .cotitle{
+      font-family:Cinzel,serif;font-size: clamp(18px,3vw,28px);margin:0 0 14px;
+      text-shadow:0 0 40px rgba(107,77,255,.14);
+      display:inline-block;padding:.35em .6em;border:1px solid rgba(230,227,255,.22);
+      border-radius:14px;box-shadow:0 0 0 1px rgba(161,4,35,.28) inset, 0 8px 24px rgba(0,0,0,.35);
+      background:radial-gradient(120% 140% at 0% 0%, rgba(139,0,25,.1), transparent 60%), linear-gradient(180deg,#6403032c,transparent);
+    }
+    .subtitle{color:var(--ash);margin-bottom:16px;line-height:1.7;font-size:17px}
+
+    .panel{
+      background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:18px;
+      padding:20px;box-shadow:0 10px 30px rgba(0,0,0,.6);position:relative;overflow:visible;width:100%;
+    }
+    .panel h3{font-family:Cinzel,serif;font-size:22px;margin-bottom:10px}
+    .panel::before,.panel::after{
+      content:"";position:absolute;top:-22px;width:70px;height:70px;opacity:.5;pointer-events:none;
+      background:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'><g fill='none' stroke='%23bfb9ff' stroke-opacity='.6'><path d='M0 80C0 53 27 26 54 26M0 80C0 41 39 2 78 2M0 80C0 65 15 50 30 50'/><path d='M0 80L0 0 80 0'/><path d='M0 56Q20 56 28 48'/><path d='M0 32Q38 32 56 14'/></g></svg>") center/contain no-repeat;
+      filter:drop-shadow(0 4px 12px rgba(0,0,0,.4));
+    }
+    .panel::before{left:-18px}
+    .panel::after{right:-18px;transform:scaleX(-1)}
+
+    .hero-right{
+      position:relative;width:100%;border-radius:20px;overflow:hidden;
+      box-shadow:0 0 26px 1px rgba(158,1,1,.8);background:#0f0a14;aspect-ratio: 3 / 4;
+    }
+    .hero-right img{display:block;width:100%;height:100%;object-fit:cover;filter:contrast(4.2) brightness(.82) saturate(3.2)}
+    .hero-right::after{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background:radial-gradient(400px 180px at 20% 0, rgba(255,255,255,.06), transparent 60%),
+                 radial-gradient(260px 200px at 90% 10%, rgba(255,255,255,.05), transparent 65%);
+      mix-blend-mode:screen;
+    }
+
+    /* ===== RULES — gothic parchment / scroll ===== */
+    .rules-title{
+      font-family:Cinzel,serif;letter-spacing:3px;
+      font-size:clamp(34px,7vw,78px);text-align:center;
+      text-shadow:0 0 32px rgba(107,77,255,.25);margin-bottom:20px;
+    }
+    .rules-sheet{
+      position:relative;padding:26px 22px 10px;
+      background:radial-gradient(140% 120% at 0% 0%, rgba(255,255,255,.02), transparent 60%),
+                 linear-gradient(180deg,#161119 0%, #0f0b14 100%);
+      border:1px solid rgba(255,255,255,.08);border-radius:18px;
+      box-shadow:0 20px 48px rgba(0,0,0,.65), inset 0 0 60px rgba(177,15,46,.07);
+      overflow:hidden
+    }
+    .rules-sheet::before,.rules-sheet::after{
+      content:"";position:absolute;inset:-2px;border-radius:18px;pointer-events:none
+    }
+        /* top & bottom filigree corners */
+    .rules-sheet::before{background:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 60'><g fill='none' stroke='%23cfc9ea' stroke-opacity='.22'><path d='M6 56C6 35 26 15 60 15'/><path d='M174 56C174 35 154 15 120 15'/></g></svg>") left 18px top 6px/180px 60px no-repeat,
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 60'><g fill='none' stroke='%23cfc9ea' stroke-opacity='.22'><path d='M6 4C6 25 26 45 60 45'/><path d='M174 4C174 25 154 45 120 45'/></g></svg>") right 18px bottom 6px/180px 60px no-repeat;
+    }
+    /* wax seal */
+    .wax{position:absolute;right:22px;bottom:-18px;width:84px;height:84px;border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, #e33 0,#b10f2e 60%, #5b0718 100%);
+      box-shadow:0 10px 26px rgba(0,0,0,.6), inset 0 6px 16px rgba(255,255,255,.12);
+      transform:rotate(-8deg)}
+    .wax::after{content:"HT";position:absolute;inset:0;display:grid;place-items:center;
+      font-family:Cinzel,serif;font-weight:700;letter-spacing:2px;color:#2a0b11;text-shadow:0 -1px 0 rgba(0,0,0,.4)}
+    .rule-card{
+      position:relative;margin:18px 0;padding:18px 18px 16px;
+      border:1px solid rgba(255,255,255,.10);border-radius:16px;
+      background:radial-gradient(160% 140% at 0% 0%, rgba(177,15,46,.08), transparent 60%),
+                 linear-gradient(180deg,#1a1422 0,#0f0b14 100%);
+      box-shadow:0 12px 28px rgba(0,0,0,.45)
+    }
+    .rule-card h4{font-family:Cinzel,serif;letter-spacing:1.2px;font-size:20px;margin-bottom:10px}
+    .rule-card p{line-height:1.75;color:#dcd7f3}
+
+
+
+    /* ===== Footer ===== */
+    .site-footer{margin-top:64px;background:#0b0b10;border-top:1px solid rgba(255,255,255,.06)}
+    .footer-inner{max-width:var(--max);margin:0 auto;padding:28px 16px 18px;display:flex;align-items:center;gap:16px}
+    .f-logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:2px}
+    .f-logo svg{width:32px;height:32px}
+    .f-nav{margin-left:auto;margin-right:auto;display:flex;gap:18px;color:#cfc9ea;font-weight:600;font-size:14px;opacity:.9;flex-wrap:wrap;justify-content:center}
+    .f-nav a{opacity:.85}
+    .f-nav a:hover{opacity:1;color:var(--blood)}
+    .f-social{display:flex;gap:12px}
+    .f-social a{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.12);opacity:.9}
+    .f-social a:hover{opacity:1;border-color:rgba(255,255,255,.35)}
+    .f-social svg{width:16px;height:16px;fill:#d9d5ff}
+    .footer-rule{max-width:var(--max);margin:6px auto 0;border-top:1px solid rgba(255,255,255,.08)}
+    .foot-bottom{max-width:var(--max);margin:0 auto;padding:12px 16px 28px;display:flex;flex-wrap:wrap;justify-content:center;gap:8px;color:#bdb7d8;font-size:13px;opacity:.85;text-align:center}
+    .made-by{margin-left:8px;display:flex;gap:6px;align-items:center}
+    .ash-logo{display:inline-flex;align-items:center;gap:6px;padding:3px 8px;border:1px solid rgba(255,255,255,.12);border-radius:999px}
+    .ash-logo svg{width:18px;height:18px}
+    .ash-logo b{letter-spacing:1.3px}
+
+    /* ====== Responsive: Phones & Small Tablets ====== */
+    @media (max-width: 820px){
+      :root{ --header-h: 60px; }
+
+      nav{padding:10px 14px;flex-wrap:wrap}
+      .brand{font-size:18px;letter-spacing:2px;flex:1 1 100%;text-align:center}
+      .navlinks{flex:1 1 100%;display:flex;justify-content:space-between;align-items:center;gap:12px;overflow:visible}
+      .navlinks a{font-size:14px;padding:6px 8px}
+
+      .hero{grid-template-columns:1fr;gap:18px}
+      .hero-left{max-width:640px;justify-self:center}
+      .title{font-size:clamp(30px,7.2vw,52px)}
+      .cotitle{font-size:clamp(16px,3.6vw,22px)}
+      .subtitle{font-size:16px}
+      .panel{padding:16px}
+      .hero-right{aspect-ratio:3/4}
+
+      .tiles{grid-template-columns:repeat(2, minmax(0,1fr));max-width:520px}
+
+      .short-video{flex-direction:column;gap:16px;text-align:center;align-items:center}
+      .short-video-card{flex:0 0 auto !important;width:min(90vw,420px);aspect-ratio:16/9;height:auto;margin:0 auto;border-radius:16px}
+      .short-video-card iframe{border-radius:16px}
+
+      #video{min-height:auto;justify-content:flex-start;padding-top:20px;padding-bottom:24px}
+      #video .short-video-text{margin-bottom:8px}
+
+      .game-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
+      .game-card img{height:200px}
+
+      .f-social{margin-left:auto}
+    }
+
+    @media (max-width: 480px){
+      :root{ --header-h: 56px; }
+
+      nav{gap:10px}
+      .navlinks{gap:10px;justify-content:space-between}
+      .navlinks a{font-size:13px;padding:6px 6px}
+
+      section{padding:40px 14px}
+      .tiles{gap:10px}
+      .tile{padding:14px}
+      .cd-title{font-size:clamp(26px,7vw,40px)}
+
+      .game-grid{grid-template-columns:1fr}
+      .game-card img{height:190px}
+
+      .short-video-card{width:min(86vw,320px)}
+      #video{padding-top:16px;padding-bottom:20px}
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .flicker{animation:none}
+      html{scroll-behavior:auto}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="brand"><span class="glyph">𓉸</span></span><a href="https://hallowtrials.github.io/Trials/Home.html"> HALLOW TRIALS</a></div>
+      <div class="navlinks" aria-label="Primary navigation">
+        <a href="#rules">RULES</a>
+        <a href="#lore">LORE</a>
+      </div>
+    </nav>
+  </header>
+
+
+
+
+
+  <!-- ===== RULES (document-style) ===== -->
+  <section id="rules" class="doc-wrap">
+    <h2 class="rules-title">RULES</h2>
+    <div class="rules-sheet">
+      <div class="rule-card">
+        <h4>RULE 1:</h4>
+        <p>No attacking or fighting the monsters. The monster may or may not make physical contact with you during the event, however they will not assault you, we will just perform a small tap on the shoulder to indicate if you’ve been caught. Now the rooms will be dark so you will have to be honest with us if you’ve been caught or not</p>
+      </div>
+      <div class="rule-card">
+        <h4>RULE 2:</h4>
+        <p>Once you’re done with the rooms please don’t take anything outside the rooms with you, we know that some of the games require you to collect or unlock things, but once you’ve done all the unlocking and collecting, just leave it in the room.</p>
+      </div>
+      <div class="rule-card">
+        <h4>RULE 3:</h4>
+        <p>You have to listen to the game masters, the game masters are people who will explain the rules to the games you are playing so if you can’t cooperate with us, you will be slowing down the whole process for us</p>
+      </div>
+      <div class="rule-card">
+        <h4>RULE 4:</h4>
+        <p>You guys should not randomly wander around, we will try our best to guide you to the game rooms, but if you guys decide to wander around and delay our game, we might have to take action against it, hopefully that wont happen.</p>
+      </div>
+      <div class="rule-card">
+        <h4>AND FINALLY THE MOST IMPORTANT RULE OF ALL</h4>
+        <p>Have fun</p>
+      </div>
+
+      <div class="wax" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- ===== LORE (added per request) ===== -->
+  <section id="lore" class="section-full">
+    <div style="max-width:min(100%, 920px);width:100%;display:flex;flex-direction:column;gap:16px;">
+      <h2 class="title" style="text-align:center;color: red;">Lore</h2>
+      <article class="panel">
+        <p>On 7th September, a man named Elias Graves was invited to partake in the Carnival Masquerade, receiving a hostess gift of a cassette tape recorder. He would begin using it, expressing his feelings and how boring his life is. The next day, over the tape he explains how he had high hopes since a man named Nick Nightingale was the host, however he explained how he received a mysterious card from a prostitute wearing a mask with the name Domino, the card had the simple writing of “you’ve been invited”, and a secret passcode from Nick.</p>
+        <br>
+        <p>On the 11th of September, he would enter a mansion and witness a bizarre scene. As he was brought before a man named red cloak performing a ritual with 12 subjects surrounded by people in black cloaks, he would answer both questions correctly, answering fidelio in the first question and staying silent for the second question…however he would be thrown into a night of pleasure, escaping by the skin of his teeth out of a window. Being traumatised by this experience he was left in fear of this event, yet strangely he felt alive, he felt adrenaline and excitement coursing through his veins for the first time in years.</p>
+        <br>
+        <p>After weeks of hesitation, he received physical mail about returning to the mansion, summoning him for a sort of trial. Wanting to replay the feelings he felt that night, he returned. It would be unclear what he did, but he wouldn’t be home for almost 2 weeks.</p>
+        <br>
+        <p>One night, Elias Graves would discover that some of the subjects that were used in rituals he would partake in would be shipped off to an unknown location. Deciding it was odd, he would follow them attempting to discover something more, however he would witness the subjects being thrown into cages with labels on them, guessing that they were being trafficked. Infiltrating the facility, he is able to uncover the various experiments the cult was performing, unfortunately Red Cloak would confront him about his “rogue” actions, advising him to watch himself as they know everything that happens within the halls. According to a rumor, the monsters respond sharply to sound.</p>
+        <br>
+        <p>Elias would witness one of these mutations as one of the subjects are injected with a serum that would rapidly change the body. Growing welts at first, the welts would grow, mutate and tear the skin, creating multiple eyes out of its body, with the new found eyes the monster would struggle to adapt to the ability to see, trapping it in a blurry mess. The monster would be named after the cult.</p>
+        <br>
+        <p>Elias Graves, forced to help with the experiments, would hear a rumour of how a group of students were found scouting the facility, that if they dare approach they would be taken in as the new subjects. Hearing this, Elias would do his best to plan out an escape route for them. Creating a map of the facility, he would gather his notes and create more voice recordings with his tape recorder to assist the trapped victims….</p>
+        <br>
+        <p>Ten students roaming the forest would suddenly be kidnapped by cult members, as they awaken into their consciousness, they would find themselves tied up and sitting inside an odd magic circle. Thanks to a pocket knife one of the students had, they were able to cut themselves loose, however they would have to do so silently. The room was quite dark, meaning the monsters reacted to sound within the dark room, as they escaped their prison, they would find a note outside of their prison given by the rogue cult member, inside contained a tape player with a tape already loaded inside. As they played the tape, they would listen as the rogue cult member explains that they’re unfortunately cursed however there was a solution.</p>
+        <br>
+        <p>The rogue cult member further reveals in an old recording that these group of students weren’t the first he has tried to assist, it would display him rambling a little bit about his past regrets, pushing all of it aside, he would explain to the students that they’ve been cursed by the witch, and thankfully there was a cure, however he would apologise as the map was all he had to assist them down in the morgue’s layer and there were three chants also known as the “forbidden relics” they had to collect. He would warn them of how some of the monsters within were contained and how some weren’t. (waiting for countermeasure to be explained)</p>
+        <br>
+        <p>As they made their way to the exit, they would be shocked to find multiple Jiangshi’s now roaming the hallways, as they scurry into a room filled with coffins (or smth idk I need to ask ltr), they would find a note explaining that if the forbidden relics were ever taken, the exits would be flooded with Jiangshi. The note would also have a warning:</p>
+        <br>
+        <p>“Warning, the Jiangshi Chants will wear off after 3 minutes, until then the Jiangshi will move at manageable speeds unless prey is spotted!”</p>
+        <br>
+        <p>on the back of the note, it would explain:</p>
+        <br>
+        <p>“How to disable JiangShi, speak the sentence to allow rest</p>
+        <p>What to do if the sentence is forgotten:
+        Find the three procedure words within the room”</p>
+        <br>
+        <p>(hidden in room?)<br>
+        “Requiescat in pace”<br>
+        1 2 3</p>
+        <br>
+        <p>However, during their search, one of their players was unfortunately kidnapped by the Jiangshi. They would narrow it down to three rooms to where the Jiangshi could’ve taken their friends…however little do they know, something more than Jiangshi was waiting for them</p>
+      </article>
+    </div>
+  </section>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="f-logo" aria-label="Site logo">
+        <svg viewBox="0 0 64 64" aria-hidden="true">
+          <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2a1a1f"/><stop offset="1" stop-color="#110c12"/></linearGradient></defs>
+          <rect x="10" y="6" width="44" height="52" rx="10" fill="url(#g)" stroke="#36212a"/>
+          <circle cx="32" cy="30" r="9" fill="#e8dfcf"/>
+          <path d="M27 34h10M28 30a2 2 0 1 0 0 .01M36 30a2 2 0 1 0 0 .01" stroke="#2b1f1f" stroke-width="2" fill="none"/>
+        </svg>
+        <span class="glyph">HALLOW TRIALS</span>
+      </div>
+
+      <nav class="f-nav" aria-label="Footer">
+        <a href="#rules">RULES</a>
+        <a href="#lore">Lore</a>
+      </nav>
+
+      <div class="f-social" aria-label="Social links">
+        <a href="https://www.youtube.com/@APUvcc" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.6-.9-2.3c-.9-.9-1.9-.9-2.4-1C16.8 2.6 12 2.6 12 2.6h-.1s-4.8 0-8.2.3c-.5.1-1.5.1-2.4 1-.7.7-.9 2.3-.9 2.3S0 8.2 0 10.3v1.5c0 2.1.2 4.1.2 4.1s.2 1.6.9 2.3c.9.9 2.1.9 2.7 1 2 .2 8.2 .3 8.2 .3s4.8 0 8.2-.3c.5-.1 1.5-.1 2.4-1 .7-.7.9-2.3.9-2.3s.2-2 .2-4.1v-1.5c0-2.1-.2-4.1-.2-4.1zM9.6 14.7v-5.3l5.6 2.7-5.6 2.6z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/hallowtrials/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1 5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm5 5a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 2.2A2.8 2.8 0 1 0 12 15.8 2.8 2.8 0 0 0 12 9.2zm6.2-.9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-rule"></div>
+
+    <div class="foot-bottom">
+      <span>© Copyright. All rights reserved.</span>
+      <span class="made-by">• Created by
+        <a class="ash-logo" href="https://ash1537.github.io/Portfolio/HOME%20_%20Portfolio.html" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#ff294b" d="M12 3l3.2 7.6L23 11l-6.5 5.3L18.4 21 12 17.4 5.6 21l1.9-4.7L1 11l7.8-.4L12 3z"/></svg>
+          <b>ASH</b>
+        </a>
+      </span>
+    </div>
+  </footer>
+
+  <script>
+    /* ===== Countdown logic ===== */
+    function nextHalloween(year){ return new Date(year, 9, 31, 20, 0, 0); }
+    (function runCountdown(){
+      const now = new Date();
+      let target = nextHalloween(now.getFullYear());
+      if (now > target) target = nextHalloween(now.getFullYear()+1);
+
+      const dd = document.getElementById('dd');
+      const hh = document.getElementById('hh');
+      const mm = document.getElementById('mm');
+      const ss = document.getElementById('ss');
+
+      function pad(n){return String(n).padStart(2,'0')}
+      function tick(){
+        const t = target - new Date();
+        if (t <= 0){
+          dd.textContent = '00'; hh.textContent='00'; mm.textContent='00'; ss.textContent='00';
+          const titleEl = document.querySelector('#countdown .cd-title');
+          if (titleEl) titleEl.innerHTML = 'The doors are <span style="color:var(--blood)">OPEN</span>.';
+          return;
+        }
+        const d = Math.floor(t/86400000);
+        const h = Math.floor((t%86400000)/3600000);
+        const m = Math.floor((t%3600000)/60000);
+        const s = Math.floor((t%60000)/1000);
+        dd.textContent = pad(d); hh.textContent = pad(h); mm.textContent = pad(m); ss.textContent = pad(s);
+        requestAnimationFrame(()=>setTimeout(tick, 250));
+      }
+      tick();
+    })();
+  </script>
+</body>
+</html>
