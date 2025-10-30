@@ -94,56 +94,45 @@
       mix-blend-mode:screen;
     }
 
-    /* ===== Countdown (CENTERED) ===== */
-    #countdown .cd-wrap{
-      max-width:var(--max);margin:0 auto;width:100%;
-      display:grid;place-items:center;text-align:center;gap:20px;
+    /* ===== RULES — gothic parchment / scroll ===== */
+    .rules-title{
+      font-family:Cinzel,serif;letter-spacing:3px;
+      font-size:clamp(34px,7vw,78px);text-align:center;
+      text-shadow:0 0 32px rgba(107,77,255,.25);margin-bottom:20px;
     }
-    .cd-title{font-family:Cinzel,serif;font-size:clamp(28px,5.2vw,70px);line-height:1.05}
-    .cd-sub{color:var(--ash);margin-top:8px;max-width:820px}
-    .tiles{
-      display:grid;grid-template-columns:repeat(4,minmax(100px,1fr));
-      gap:12px;margin-top:18px;width:100%;max-width:760px;
+    .rules-sheet{
+      position:relative;padding:26px 22px 10px;
+      background:radial-gradient(140% 120% at 0% 0%, rgba(255,255,255,.02), transparent 60%),
+                 linear-gradient(180deg,#161119 0%, #0f0b14 100%);
+      border:1px solid rgba(255,255,255,.08);border-radius:18px;
+      box-shadow:0 20px 48px rgba(0,0,0,.65), inset 0 0 60px rgba(177,15,46,.07);
+      overflow:hidden
     }
-    .tile{
-      background:radial-gradient(160% 120% at 50% 0%, #1b1324 0%, #110c16 50%, #0d0b12 100%);
-      border:1px solid rgba(255,255,255,.08);border-radius:16px;
-      box-shadow:0 10px 30px rgba(0,0,0,.55), inset 0 0 40px rgba(177,15,46,.08);
-      padding:16px;text-align:center;position:relative;overflow:hidden
+    .rules-sheet::before,.rules-sheet::after{
+      content:"";position:absolute;inset:-2px;border-radius:18px;pointer-events:none
     }
-    .tile .num{font-feature-settings:"tnum" 1;font-variant-numeric:tabular-nums;font-weight:700;font-size:clamp(30px,6vw,60px);letter-spacing:1px;text-shadow:0 0 24px rgba(255,0,60,.25)}
-    .tile .lbl{color:var(--ash);font-size:13px;letter-spacing:.2px;margin-top:6px}
-    .flicker{animation:flick .9s infinite steps(2,end)}
-    @keyframes flick{0%,100%{opacity:1}50%{opacity:.72}}
-    .drip{position:absolute;top:-10px;left:0;right:0;height:26px;background:
-      radial-gradient(14px 16px at 6% 10px, var(--blood) 60%, transparent 61%) 0 0/80px 26px repeat-x,
-      linear-gradient(var(--blood),var(--blood)) 0 0/100% 12px no-repeat;opacity:.6;filter:blur(.2px)}
+        /* top & bottom filigree corners */
+    .rules-sheet::before{background:
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 60'><g fill='none' stroke='%23cfc9ea' stroke-opacity='.22'><path d='M6 56C6 35 26 15 60 15'/><path d='M174 56C174 35 154 15 120 15'/></g></svg>") left 18px top 6px/180px 60px no-repeat,
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 60'><g fill='none' stroke='%23cfc9ea' stroke-opacity='.22'><path d='M6 4C6 25 26 45 60 45'/><path d='M174 4C174 25 154 45 120 45'/></g></svg>") right 18px bottom 6px/180px 60px no-repeat;
+    }
+    /* wax seal */
+    .wax{position:absolute;right:22px;bottom:-18px;width:84px;height:84px;border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, #e33 0,#b10f2e 60%, #5b0718 100%);
+      box-shadow:0 10px 26px rgba(0,0,0,.6), inset 0 6px 16px rgba(255,255,255,.12);
+      transform:rotate(-8deg)}
+    .wax::after{content:"HT";position:absolute;inset:0;display:grid;place-items:center;
+      font-family:Cinzel,serif;font-weight:700;letter-spacing:2px;color:#2a0b11;text-shadow:0 -1px 0 rgba(0,0,0,.4)}
+    .rule-card{
+      position:relative;margin:18px 0;padding:18px 18px 16px;
+      border:1px solid rgba(255,255,255,.10);border-radius:16px;
+      background:radial-gradient(160% 140% at 0% 0%, rgba(177,15,46,.08), transparent 60%),
+                 linear-gradient(180deg,#1a1422 0,#0f0b14 100%);
+      box-shadow:0 12px 28px rgba(0,0,0,.45)
+    }
+    .rule-card h4{font-family:Cinzel,serif;letter-spacing:1.2px;font-size:20px;margin-bottom:10px}
+    .rule-card p{line-height:1.75;color:#dcd7f3}
 
-    /* ===== Short Video ===== */
-    .short-video{flex-direction:row;max-width:var(--max);gap:40px;align-items:center;margin:0 auto;width:100%}
-    .short-video-text{flex:1}
-    .short-video-text h3{font-family:Cinzel,serif;font-size:clamp(28px,4vw,44px);margin-bottom:12px}
-    .short-video-text p{color:var(--ash);line-height:1.7;font-size:17px}
-    .short-video-card{flex:1;position:relative;overflow:hidden;border-radius:18px;border:1px solid rgba(255,255,255,.08);background:#0f0a14;box-shadow:0 20px 40px rgba(0,0,0,.6);aspect-ratio:16/9;width:min(88vw,560px)}
-    .short-video-card iframe{width:100%;height:100%;border:0;border-radius:18px;display:block}
-
-    /* ===== Games gallery (2x2 fixed) ===== */
-    #games{max-width:var(--max);margin:0 auto;width:100%}
-    .games-intro{max-width:820px;text-align:center;color:var(--ash)}
-    .game-grid{
-      width:100%;display:grid;gap:16px;margin-top:22px;
-      grid-template-columns:repeat(2, minmax(0,1fr));
-    }
-    .game-card{
-      position:relative;overflow:hidden;border-radius:16px;background:#0f0a14;
-      border:1px solid rgba(255,255,255,.08);box-shadow:0 10px 30px rgba(0,0,0,.4);
-      transition:transform .12s ease;
-    }
-    .game-card:hover{transform:translateY(-2px)}
-    .game-card img{display:block;width:100%;height:220px;object-fit:cover}
-    .game-card .meta{padding:12px;display:flex;flex-direction:column;gap:6px;background:linear-gradient(180deg, rgba(255,255,255,.02), transparent)}
-    .game-card h3{font-family:Cinzel,serif;font-size:18px}
-    .game-card .loc{color:var(--ash);font-size:14px}
 
 
     /* ===== Footer ===== */
@@ -169,13 +158,11 @@
     @media (max-width: 820px){
       :root{ --header-h: 60px; }
 
-      /* Header + nav: brand on first row, 3 links on second row */
       nav{padding:10px 14px;flex-wrap:wrap}
       .brand{font-size:18px;letter-spacing:2px;flex:1 1 100%;text-align:center}
       .navlinks{flex:1 1 100%;display:flex;justify-content:space-between;align-items:center;gap:12px;overflow:visible}
       .navlinks a{font-size:14px;padding:6px 8px}
 
-      /* Hero */
       .hero{grid-template-columns:1fr;gap:18px}
       .hero-left{max-width:640px;justify-self:center}
       .title{font-size:clamp(30px,7.2vw,52px)}
@@ -184,26 +171,21 @@
       .panel{padding:16px}
       .hero-right{aspect-ratio:3/4}
 
-      /* Countdown */
       .tiles{grid-template-columns:repeat(2, minmax(0,1fr));max-width:520px}
 
-      /* Short video (no stretch + smaller width) */
       .short-video{flex-direction:column;gap:16px;text-align:center;align-items:center}
       .short-video-card{flex:0 0 auto !important;width:min(90vw,420px);aspect-ratio:16/9;height:auto;margin:0 auto;border-radius:16px}
       .short-video-card iframe{border-radius:16px}
 
-      /* REMOVE GAP in #video section on phones */
       #video{min-height:auto;justify-content:flex-start;padding-top:20px;padding-bottom:24px}
       #video .short-video-text{margin-bottom:8px}
 
-      /* Games */
       .game-grid{grid-template-columns:repeat(2, minmax(0,1fr))}
       .game-card img{height:200px}
 
       .f-social{margin-left:auto}
     }
 
-    /* Super small phones: single column game grid, tighter spacing */
     @media (max-width: 480px){
       :root{ --header-h: 56px; }
 
@@ -219,12 +201,10 @@
       .game-grid{grid-template-columns:1fr}
       .game-card img{height:190px}
 
-      /* Short video even smaller on tiny phones */
       .short-video-card{width:min(86vw,320px)}
       #video{padding-top:16px;padding-bottom:20px}
     }
 
-    /* Respect reduced motion */
     @media (prefers-reduced-motion: reduce) {
       .flicker{animation:none}
       html{scroll-behavior:auto}
@@ -234,136 +214,85 @@
 <body>
   <header>
     <nav>
-      <div class="brand"><span class="glyph">𓉸</span><a href="#home"> HALLOW TRIALS</a></div>
+      <div class="brand"><span class="glyph">𓉸</span></span>HALLOW TRIALS</div>
       <div class="navlinks" aria-label="Primary navigation">
-        <a href="#countdown">Countdown</a>
-        <a href="#video">Short Video</a>
-        <a href="#games">Games</a>
+        <a href="#rules">RULES</a>
+        <a href="#lore">LORE</a>
       </div>
     </nav>
   </header>
 
-  <!-- ===== HOME / HERO (full) ===== -->
-  <section id="home" class="hero section-full">
-    <div class="hero-left">
-      <h1 class="title">Enter the <span style="color:var(--blood)">Trials</span></h1>
-      <h2 class="cotitle"><span style="color:var(--blood)">Certificate Will Be Provided!</span></h2>
-      <p class="subtitle">The School of Foundation and the Visual Cinematography Club presents a one time Halloween event filled with Escape Rooms and Scary Thrills around the APU Campus! Watch our trailer and follow our Instagram page!</p><br><br>
 
-      <div class="panel" aria-label="Event Details">
-        <h3>Event Details</h3>
-        <p><strong>Date:</strong> 31 Oct, 8:00PM — 10:30PM</p><br>
-        <p><strong>Gathering Venue:</strong> Auditorium 2</p><br>
-        <p><strong>What to expect:</strong> Scary Escape Rooms at Level Block E, D 7 & Psychology Lab</p>
+
+
+
+  <!-- ===== RULES (document-style) ===== -->
+  <section id="rules" class="doc-wrap">
+    <h2 class="rules-title">RULES</h2>
+    <div class="rules-sheet">
+      <div class="rule-card">
+        <h4>RULE 1:</h4>
+        <p>No attacking or fighting the monsters. The monster may or may not make physical contact with you during the event, however they will not assault you, we will just perform a small tap on the shoulder to indicate if you’ve been caught. Now the rooms will be dark so you will have to be honest with us if you’ve been caught or not</p>
       </div>
-    </div>
-
-    <figure class="hero-right" aria-label="Scary scene">
-      <img src="poster.jpg" alt="Poster" loading="lazy">
-    </figure>
-  </section>
-
-  <!-- ===== COUNTDOWN (full, centered) ===== -->
-  <section id="countdown" class="section-full">
-    <div class="cd-wrap">
-      <div class="drip" aria-hidden="true"></div>
-      <h2 class="cd-title">The <span style="color:var(--blood)">Hallow Trials</span> begin in…</h2>
-      <p class="cd-sub">Doors creak at <strong>8:00 PM</strong> on Halloween night. When the clock hits zero, the warehouse opens.</p>
-      <div class="tiles" role="timer" aria-live="polite">
-        <div class="tile"><div class="num" id="dd">—</div><div class="lbl">Days</div></div>
-        <div class="tile"><div class="num" id="hh">—</div><div class="lbl">Hours</div></div>
-        <div class="tile"><div class="num" id="mm">—</div><div class="lbl">Minutes</div></div>
-        <div class="tile"><div class="num flicker" id="ss">—</div><div class="lbl">Seconds</div></div>
+      <div class="rule-card">
+        <h4>RULE 2:</h4>
+        <p>Once you’re done with the rooms please don’t take anything outside the rooms with you, we know that some of the games require you to collect or unlock things, but once you’ve done all the unlocking and collecting, just leave it in the room.</p>
       </div>
+      <div class="rule-card">
+        <h4>RULE 3:</h4>
+        <p>You have to listen to the game masters, the game masters are people who will explain the rules to the games you are playing so if you can’t cooperate with us, you will be slowing down the whole process for us</p>
+      </div>
+      <div class="rule-card">
+        <h4>RULE 4:</h4>
+        <p>You guys should not randomly wander around, we will try our best to guide you to the game rooms, but if you guys decide to wander around and delay our game, we might have to take action against it, hopefully that wont happen.</p>
+      </div>
+      <div class="rule-card">
+        <h4>AND FINALLY THE MOST IMPORTANT RULE OF ALL</h4>
+        <p>Have fun</p>
+      </div>
+
+      <div class="wax" aria-hidden="true"></div>
     </div>
   </section>
 
-  <!-- ===== SHORT VIDEOS (full) ===== -->
-  <section id="video" class="short-video section-full">
-    <div class="short-video-text">
-      <h3>Short Video</h3>
-      <p>Get a sneak peek into the haunted halls. Watch this teaser to feel the chill before you enter the Trials.</p>
-    </div>
-    <div class="short-video-card">
-      <iframe 
-        width="640" height="360"
-        src="https://www.youtube.com/embed/oXEOtlU-dAs?si=N0idKdyqvgRc9nei"
-        title="YouTube video player" frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen>
-      </iframe>
-      <noscript>
-        <a href="https://youtu.be/oXEOtlU-dAs?si=N0idKdyqvgRc9nei" target="_blank" rel="noopener noreferrer">
-          Watch the trailer on YouTube
-        </a>
-      </noscript>
-    </div>
-  </section>
-
-  <!-- ===== GAMES (responsive) ===== -->
-  <section id="games" class="section-full">
-    <h2 class="title" style="font-size:clamp(28px,4.6vw,56px);text-align:center;">
-      Tonight’s <span style="color:var(--blood)">Games</span>
-    </h2>
-    <p class="games-intro">
-      Here are the challenges running across campus—find the rooms and face the Trials.
-    </p><br>
-
-    <div class="game-grid">
-      <article class="game-card">
-        <img src="Silence Room.jpeg" alt="Silence Room" loading="lazy">
-        <div class="meta"><h3>Silence Room</h3><div class="loc">Room: E-07-02</div></div>
+  <!-- ===== LORE (added per request) ===== -->
+  <section id="lore" class="section-full">
+    <div style="max-width:min(100%, 920px);width:100%;display:flex;flex-direction:column;gap:16px;">
+      <h2 class="title" style="text-align:center;color: red;">Lore</h2>
+      <article class="panel">
+        <p>On 7th September, a man named Elias Graves was invited to partake in the Carnival Masquerade, receiving a hostess gift of a cassette tape recorder. He would begin using it, expressing his feelings and how boring his life is. The next day, over the tape he explains how he had high hopes since a man named Nick Nightingale was the host, however he explained how he received a mysterious card from a prostitute wearing a mask with the name Domino, the card had the simple writing of “you’ve been invited”, and a secret passcode from Nick.</p>
+        <br>
+        <p>On the 11th of September, he would enter a mansion and witness a bizarre scene. As he was brought before a man named red cloak performing a ritual with 12 subjects surrounded by people in black cloaks, he would answer both questions correctly, answering fidelio in the first question and staying silent for the second question…however he would be thrown into a night of pleasure, escaping by the skin of his teeth out of a window. Being traumatised by this experience he was left in fear of this event, yet strangely he felt alive, he felt adrenaline and excitement coursing through his veins for the first time in years.</p>
+        <br>
+        <p>After weeks of hesitation, he received physical mail about returning to the mansion, summoning him for a sort of trial. Wanting to replay the feelings he felt that night, he returned. It would be unclear what he did, but he wouldn’t be home for almost 2 weeks.</p>
+        <br>
+        <p>One night, Elias Graves would discover that some of the subjects that were used in rituals he would partake in would be shipped off to an unknown location. Deciding it was odd, he would follow them attempting to discover something more, however he would witness the subjects being thrown into cages with labels on them, guessing that they were being trafficked. Infiltrating the facility, he is able to uncover the various experiments the cult was performing, unfortunately Red Cloak would confront him about his “rogue” actions, advising him to watch himself as they know everything that happens within the halls. According to a rumor, the monsters respond sharply to sound.</p>
+        <br>
+        <p>Elias would witness one of these mutations as one of the subjects are injected with a serum that would rapidly change the body. Growing welts at first, the welts would grow, mutate and tear the skin, creating multiple eyes out of its body, with the new found eyes the monster would struggle to adapt to the ability to see, trapping it in a blurry mess. The monster would be named after the cult.</p>
+        <br>
+        <p>Elias Graves, forced to help with the experiments, would hear a rumour of how a group of students were found scouting the facility, that if they dare approach they would be taken in as the new subjects. Hearing this, Elias would do his best to plan out an escape route for them. Creating a map of the facility, he would gather his notes and create more voice recordings with his tape recorder to assist the trapped victims….</p>
+        <br>
+        <p>Ten students roaming the forest would suddenly be kidnapped by cult members, as they awaken into their consciousness, they would find themselves tied up and sitting inside an odd magic circle. Thanks to a pocket knife one of the students had, they were able to cut themselves loose, however they would have to do so silently. The room was quite dark, meaning the monsters reacted to sound within the dark room, as they escaped their prison, they would find a note outside of their prison given by the rogue cult member, inside contained a tape player with a tape already loaded inside. As they played the tape, they would listen as the rogue cult member explains that they’re unfortunately cursed however there was a solution.</p>
+        <br>
+        <p>The rogue cult member further reveals in an old recording that these group of students weren’t the first he has tried to assist, it would display him rambling a little bit about his past regrets, pushing all of it aside, he would explain to the students that they’ve been cursed by the witch, and thankfully there was a cure, however he would apologise as the map was all he had to assist them down in the morgue’s layer and there were three chants also known as the “forbidden relics” they had to collect. He would warn them of how some of the monsters within were contained and how some weren’t. (waiting for countermeasure to be explained)</p>
+        <br>
+        <p>As they made their way to the exit, they would be shocked to find multiple Jiangshi’s now roaming the hallways, as they scurry into a room filled with coffins (or smth idk I need to ask ltr), they would find a note explaining that if the forbidden relics were ever taken, the exits would be flooded with Jiangshi. The note would also have a warning:</p>
+        <br>
+        <p>“Warning, the Jiangshi Chants will wear off after 3 minutes, until then the Jiangshi will move at manageable speeds unless prey is spotted!”</p>
+        <br>
+        <p>on the back of the note, it would explain:</p>
+        <br>
+        <p>“How to disable JiangShi, speak the sentence to allow rest</p>
+        <p>What to do if the sentence is forgotten:
+        Find the three procedure words within the room”</p>
+        <br>
+        <p>(hidden in room?)<br>
+        “Requiescat in pace”<br>
+        1 2 3</p>
+        <br>
+        <p>However, during their search, one of their players was unfortunately kidnapped by the Jiangshi. They would narrow it down to three rooms to where the Jiangshi could’ve taken their friends…however little do they know, something more than Jiangshi was waiting for them</p>
       </article>
-      <article class="game-card">
-        <img src="Jiangshi.jpeg" alt="Jiangshi" loading="lazy">
-        <div class="meta"><h3>Jiangshi</h3><div class="loc">Room: D-07-11</div></div>
-      </article>
-      <article class="game-card">
-        <img src="The Curse.jpeg" alt="The Curse" loading="lazy">
-        <div class="meta"><h3>The Curse</h3><div class="loc">Room: D-07-06 / D-07-03</div></div>
-      </article>
-      <article class="game-card">
-        <img src="Three Doors.jpeg" alt="Three Doors" loading="lazy">
-        <div class="meta"><h3>Three Doors</h3><div class="loc">Rooms: E-6-3 / E-6-2 / E-6-4</div></div>
-      </article><br><br><br>
     </div>
-    <button class="theme-btn"><a href="https://hallowtrials.github.io/Trials/Rules&Lore.html"> Click this button to know more...</a></button>
-
-<style>
-.theme-btn {
-  font-family: 'Cinzel', serif;
-  font-size: 18px;
-  letter-spacing: 1.5px;
-  color: #e6e3ff;
-  background: linear-gradient(145deg, #1a1422, #0f0b14);
-  border: 1px solid rgba(255,255,255,0.15);
-  border-radius: 14px;
-  padding: 14px 36px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow:
-    0 0 12px rgba(177, 15, 46, 0.25),
-    inset 0 0 18px rgba(107,77,255,0.08);
-  text-shadow: 0 0 8px rgba(177,15,46,0.5);
-}
-
-.theme-btn:hover {
-  background: linear-gradient(145deg, #261a33, #130d19);
-  color: #ffffff;
-  box-shadow:
-    0 0 20px rgba(107,77,255,0.4),
-    0 0 40px rgba(177,15,46,0.25);
-  transform: scale(1.05);
-}
-
-.theme-btn:active {
-  transform: scale(0.97);
-  box-shadow:
-    0 0 8px rgba(177,15,46,0.3),
-    inset 0 0 12px rgba(107,77,255,0.15);
-}
-</style>
-
   </section>
 
   <footer class="site-footer" role="contentinfo">
@@ -380,9 +309,8 @@
       </div>
 
       <nav class="f-nav" aria-label="Footer">
-        <a href="#countdown">Countdown</a>
-        <a href="#video">Videos</a>
-        <a href="#games">Games</a>
+        <a href="#rules">RULES</a>
+        <a href="#lore">Lore</a>
       </nav>
 
       <div class="f-social" aria-label="Social links">
